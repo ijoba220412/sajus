@@ -28,16 +28,16 @@
         gap: 30px;
     }
 
-    /* PÁGINA BASE */
+    /* PÁGINA A4 */
     .page {
         width: 210mm;
-        min-height: 297mm;
+        height: 297mm; /* Altura fixa */
         background: linear-gradient(180deg, #FFF8E7 0%, #F4E4BC 100%);
         position: relative;
         box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        padding: 18mm;
-        border: 3px solid var(--gold-bright);
-        overflow: hidden;
+        padding: 15mm;
+        border: 2px solid var(--gold-bright);
+        overflow: hidden; /* Garante que nada saia da página */
     }
 
     /* Marca d'água */
@@ -46,23 +46,23 @@
         top: 50%; left: 50%;
         transform: translate(-50%, -50%) rotate(-15deg);
         font-family: 'Cormorant Garamond', serif;
-        font-size: 160px; font-weight: 700;
-        color: var(--gold-bright); opacity: 0.07;        z-index: 0; pointer-events: none;
-        white-space: nowrap; letter-spacing: 15px; text-transform: uppercase;
+        font-size: 140px; font-weight: 700;
+        color: var(--gold-bright); opacity: 0.06;        z-index: 0; pointer-events: none;
+        white-space: nowrap; letter-spacing: 10px; text-transform: uppercase;
     }
 
     /* Cantoneiras */
-    .corner { position: absolute; width: 40px; height: 40px; border: 3px solid var(--gold-bright); z-index: 1; }
-    .corner.tl { top: 12mm; left: 12mm; border-right: none; border-bottom: none; }
-    .corner.tr { top: 12mm; right: 12mm; border-left: none; border-bottom: none; }
-    .corner.bl { bottom: 12mm; left: 12mm; border-right: none; border-top: none; }
-    .corner.br { bottom: 12mm; right: 12mm; border-left: none; border-top: none; }
+    .corner { position: absolute; width: 35px; height: 35px; border: 3px solid var(--gold-bright); z-index: 1; }
+    .corner.tl { top: 10mm; left: 10mm; border-right: none; border-bottom: none; }
+    .corner.tr { top: 10mm; right: 10mm; border-left: none; border-bottom: none; }
+    .corner.bl { bottom: 10mm; left: 10mm; border-right: none; border-top: none; }
+    .corner.br { bottom: 10mm; right: 10mm; border-left: none; border-top: none; }
 
     .content { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; }
 
     /* LOGO */
-    .logo { max-width: 180px; height: auto; margin: 0 auto 30px auto; display: block; filter: drop-shadow(0 4px 6px rgba(156,107,47,0.25)); }
-    .logo-small { max-width: 70px; height: auto; filter: drop-shadow(0 2px 4px rgba(156,107,47,0.2)); }
+    .logo { max-width: 160px; height: auto; margin: 0 auto 20px auto; display: block; }
+    .logo-small { max-width: 60px; height: auto; float: right; margin-left: 15px; margin-bottom: 5px; }
 
     /* CAPA CENTRALIZADA */
     .cover {
@@ -72,43 +72,59 @@
         justify-content: center;
         align-items: center;
         text-align: center;
-        gap: 12px;
     }
-    .cover h1 { font-family: 'Cormorant Garamond', serif; font-size: 38px; color: var(--gold-deep); margin: 10px 0; letter-spacing: 4px; text-transform: uppercase; font-weight: 600; }
-    .cover h2 { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: var(--text-light); margin: 0 0 30px 0; font-weight: 400; font-style: italic; letter-spacing: 1px; }
-    .cover .name { font-family: 'Cormorant Garamond', serif; font-size: 28px; color: var(--text-main); margin: 10px 0; font-weight: 600; letter-spacing: 1px; }
-    .cover .year { font-family: 'Montserrat', sans-serif; font-size: 13px; text-transform: uppercase; letter-spacing: 3px; color: var(--gold-deep); border-top: 2px solid var(--gold-bright); border-bottom: 2px solid var(--gold-bright); padding: 8px 25px; margin-top: 15px; }
+    .cover h1 { font-family: 'Cormorant Garamond', serif; font-size: 36px; color: var(--gold-deep); margin: 10px 0; letter-spacing: 4px; text-transform: uppercase; font-weight: 600; }
+    .cover h2 { font-family: 'Cormorant Garamond', serif; font-size: 16px; color: var(--text-light); margin: 0 0 25px 0; font-weight: 400; font-style: italic; }
+    .cover .name { font-family: 'Cormorant Garamond', serif; font-size: 26px; color: var(--text-main); margin: 10px 0; font-weight: 600; }
+    .cover .year { font-family: 'Montserrat', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 3px; color: var(--gold-deep); border-top: 2px solid var(--gold-bright); border-bottom: 2px solid var(--gold-bright); padding: 6px 20px; margin-top: 10px; }
 
     /* HEADER INTERNO */
-    .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; padding-bottom: 12px; border-bottom: 2px solid var(--gold-bright); }
-    .header-title { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: var(--gold-deep); letter-spacing: 2px; font-weight: 600; }
+    .header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; border-bottom: 1px solid var(--gold-bright); padding-bottom: 8px; }
+    .header-title { font-family: 'Cormorant Garamond', serif; font-size: 16px; color: var(--gold-deep); letter-spacing: 2px; font-weight: 600; }
 
-    .divider { border: none; height: 2px; background: linear-gradient(to right, transparent, var(--gold-bright), transparent); margin: 25px 0; }
-
-    /* TIPOGRAFIA E ESPAÇAMENTO */
-    h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--gold-deep); margin: 20px 0 12px 0; font-weight: 600; }
-    h4 { font-family: 'Cormorant Garamond', serif; font-size: 16px; color: var(--text-main); margin: 18px 0 10px 0; font-weight: 600; }
-    p { font-size: 11pt; line-height: 1.65; margin-bottom: 10px; text-align: justify; color: var(--text-main); }
+    /* TIPOGRAFIA */
+    h3 { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--gold-deep); margin: 15px 0 8px 0; font-weight: 600; border-bottom: 1px dashed var(--gold-bright); padding-bottom: 4px; display: inline-block; }
+    h4 { font-family: 'Cormorant Garamond', serif; font-size: 15px; color: var(--text-main); margin: 12px 0 5px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+    
+    p { font-size: 10.5pt; line-height: 1.55; margin-bottom: 8px; text-align: justify; color: var(--text-main); }
     strong { color: var(--gold-deep); font-weight: 600; }
-    ul, ol { margin: 8px 0 12px 20px; padding: 0; }
-    li { font-size: 11pt; line-height: 1.6; margin-bottom: 6px; }
+    ul, ol { margin: 6px 0 10px 20px; padding: 0; }
+    li { font-size: 10.5pt; line-height: 1.5; margin-bottom: 5px; }
 
     /* TABELAS */
-    table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 10pt; background: rgba(255,255,255,0.5); page-break-inside: avoid; }
-    th { background: var(--gold-deep); color: #fff; font-family: 'Montserrat', sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: 1px; padding: 8px 6px; text-align: left; font-weight: 600; }
-    td { padding: 8px 6px; border-bottom: 1px solid rgba(156,107,47,0.15); }    tr:nth-child(even) { background: rgba(212,175,55,0.08); }
+    table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 9.5pt; background: rgba(255,255,255,0.4); page-break-inside: avoid; }
+    th { background: var(--gold-deep); color: #fff; font-family: 'Montserrat', sans-serif; font-size: 8px; text-transform: uppercase; letter-spacing: 1px; padding: 6px 4px; text-align: left; font-weight: 600; }
+    td { padding: 6px 4px; border-bottom: 1px solid rgba(156,107,47,0.15); vertical-align: top; }
+    tr:nth-child(even) { background: rgba(212,175,55,0.08); }
+    /* RODAPÉ / NUMERAÇÃO DISCRETA */
+    .page-number {
+        position: absolute;
+        bottom: 8mm;
+        right: 12mm;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 10px;
+        color: var(--gold-deep);
+        border: 1px solid var(--gold-bright);
+        width: 24px;
+        height: 24px;
+        line-height: 24px;
+        text-align: center;
+        border-radius: 50%;
+        background: #FFF8E7;
+        z-index: 10;
+    }
 
-    /* RODAPÉ */
-    .footer { margin-top: auto; text-align: center; font-family: 'Montserrat', sans-serif; font-size: 9px; color: var(--gold-deep); padding-top: 10px; border-top: 1px solid var(--gold-bright); position: absolute; bottom: 12mm; left: 18mm; right: 18mm; }
-
-    /* IMPRESSÃO A4 OTIMIZADA */
+    /* IMPRESSÃO A4 */
     @media print {
         @page { size: A4; margin: 0; }
         body { margin: 0; padding: 0; background: white; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-        .page { width: 210mm; height: 297mm; margin: 0; padding: 15mm; box-shadow: none; border: none; page-break-after: always; background: linear-gradient(180deg, #FFF8E7 0%, #F4E4BC 100%) !important; }
+        .page { 
+            width: 210mm; height: 297mm; margin: 0; padding: 12mm; 
+            box-shadow: none; border: none; page-break-after: always; 
+            background: linear-gradient(180deg, #FFF8E7 0%, #F4E4BC 100%) !important; 
+        }
         .page:last-child { page-break-after: auto; }
-        table, blockquote, ol, ul, h3, h4 { page-break-inside: avoid; }
-        .cover { page-break-after: always; }
+        table, blockquote, ol, ul { page-break-inside: avoid; }
     }
 </style>
 </head>
@@ -129,8 +145,7 @@
 
     <!-- PÁGINA 2 -->
     <div class="page">
-        <div class="watermark">SAJU</div>
-        <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+        <div class="watermark">SAJU</div>        <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
         <div class="content">
             <div class="header">
                 <div class="header-title">Os Quatro Pilares</div>
@@ -145,8 +160,9 @@
                     <tr><td><strong>Dia</strong></td><td>癸酉 (계유)</td><td>Água Yin (癸)</td><td>Galo (酉)</td><td>Você, a Mestre do Dia</td></tr>
                     <tr><td><strong>Hora</strong></td><td>壬子 (임자)</td><td>Água Yang (壬)</td><td>Rato (자)</td><td>O Rio dos Sentimentos</td></tr>
                 </tbody>
-            </table>            <p>Você é uma <strong>Gye-Saram (계사람)</strong> — pessoa de Água Yin. A Gota de Orvalho sobre a folha de lótus: profunda, intuitiva, transparente, mas capaz de refletir o universo inteiro. Sua alma não anda, ela flui.</p>
-            <div class="footer">Página 2   |   Fio de Ouro</div>
+            </table>
+            <p>Você é uma <strong>Gye-Saram (계사람)</strong> — pessoa de Água Yin. A Gota de Orvalho sobre a folha de lótus: profunda, intuitiva, transparente, mas capaz de refletir o universo inteiro. Sua alma não anda, ela flui.</p>
+            <div class="page-number">2</div>
         </div>
     </div>
 
@@ -162,14 +178,14 @@
             <h3>A Interpretação da Xamã: O Dragão e o Cão Dançam</h3>
             <p>Na raiz do seu mapa, uma batalha sagrada acontece: <em>Jin-Sul Gyeok (진술충)</em> — o Choque entre Dragão (辰) e Cão (戌). Seu pilar do mês (Dragão, a família/carreira) e do ano (Cão, os ancestrais/o mundo externo) estão em confronto. Isso explica sua sensação de estar sempre entre dois fogos: a necessidade de agradar o clã e a fúria de ser dona de si.</p>
             <p>Esse choque abre o túmulo da água no Dragão e o depósito do fogo no Cão. Isso significa que memórias antigas, dons espirituais reprimidos e emoções vulcânicas estão emergindo à força. Você pode ter sonhos proféticos, sentir presenças ou ter uma sensibilidade que a medicina comum chama de ansiedade, mas o xamã chama de <em>Shinbyeong (신병)</em> — o chamado preliminar dos espíritos.</p>
-            <hr class="divider">
+            
             <h4>Seus obstáculos já estão desenhados:</h4>
             <ol>
                 <li><strong>O Conflito entre a Arte e a Norma:</strong> O ano lhe deu o <em>Sangsik (상관)</em> — o Talentoso Ferino, uma criatividade rebelde que derruba regras. O mês lhe deu o <em>Jeonggwan (정관)</em> — o Oficial Direto, a pressão por uma carreira estável, o chefe rígido, o marido convencional. É a artista contra a burocrata dentro de você. Por muito tempo você se sabotou ao tentar se encaixar em moldes que sua alma rejeita.</li>
                 <li><strong>A Sombra da Competição:</strong> Seu pilar da hora (Rato d'Água Yang sobre Rato d'Água Yin) é uma cachoeira de energia. Isso atrai muitos amigos e apoiadores (a água se une à água), mas também atrai o <em>Gyeoljae (겨재)</em> — o Ladrão da Riqueza. É o sócio que some com o lucro, a amiga que compete pelo par romântico, a ajuda que cobra caro. Jamais empreste seu poder sem um escudo.</li>
                 <li><strong>A Frieza do Galo:</strong> Seu corpo-espírito (pilar do dia) está no Galo (酉), metal puro, recurso indireto. Isso lhe dá um intelecto brilhante e um magnetismo pessoal, mas também uma tendência a intelectualizar a dor para não senti-la. Guarda mágoas na espinha, nos rins. O metal corta a madeira: sua criação trava quando você pensa demais.</li>
             </ol>
-            <div class="footer">Página 3   |   Fio de Ouro</div>
+            <div class="page-number">3</div>
         </div>
     </div>
 
@@ -178,8 +194,7 @@
         <div class="watermark">SAJU</div>
         <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
         <div class="content">
-            <div class="header">
-                <div class="header-title">Os Melhores Caminhos</div>
+            <div class="header">                <div class="header-title">Os Melhores Caminhos</div>
                 <img src="logo-fio-de-ouro.png" alt="Logo" class="logo-small">
             </div>
             <h3>Os Melhores Caminhos: Aonde a Água Corre</h3>
@@ -194,9 +209,8 @@
             <p>Seu mapa tem pouco fogo visível (uma faísca no Cão). Falta o coração pulsando. Para não se afogar na própria profundidade, você precisa buscar o elemento Fogo (<em>Bulseong, 불성</em>).</p>
             <ul>
                 <li><strong>Ação:</strong> Acolha mais o sol, dance descalça, vá ao Rio de Janeiro ver o nascer do sol na praia, use vermelho na base da coluna. No amor, não busque apenas o parceiro que a entende (água), busque aquele que a aquece (fogo).</li>
-            </ul>            <h4>3. O Momento da Virada (2026 e além)</h4>
-            <p>Você está saindo do ciclo da sorte <em>Eulchuk (을축)</em>, Boi de Madeira Yin, um período de estagnação gelada. Em breve, você entrará no pilar da sorte <em>Gabja (갑자)</em>, Rato de Madeira Yang — será como uma represa rompendo. A Madeira Yang, seu Sangsik, se sentará sobre a Água Yang: ideias nascerão aos borbotões, a fama, a voz, a realização artística explodirão. Aguente firme a transição.</p>
-            <div class="footer">Página 4   |   Fio de Ouro</div>
+            </ul>
+            <div class="page-number">4</div>
         </div>
     </div>
 
@@ -206,9 +220,14 @@
         <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
         <div class="content">
             <div class="header">
-                <div class="header-title">Ritual e Nomes</div>
+                <div class="header-title">Momento de Virada e Ritual</div>
                 <img src="logo-fio-de-ouro.png" alt="Logo" class="logo-small">
             </div>
+            <h4>3. O Momento da Virada (2026 e além)</h4>
+            <p>Você está saindo do ciclo da sorte <em>Eulchuk (을축)</em>, Boi de Madeira Yin, um período de estagnação gelada. Em breve, você entrará no pilar da sorte <em>Gabja (갑자)</em>, Rato de Madeira Yang — será como uma represa rompendo. A Madeira Yang, seu Sangsik, se sentará sobre a Água Yang: ideias nascerão aos borbotões, a fama, a voz, a realização artística explodirão. Aguente firme a transição.</p>
+            
+            <hr style="border: none; border-top: 1px solid var(--gold-bright); margin: 20px 0;">
+            
             <h3>Ritual de Aconselhamento</h3>
             <p>Rayane, o Dragão e o Cão só se acalmam quando você honra os dois. Uma vez por mês, na lua cheia, faça uma oferenda dupla:</p>
             <ul>
@@ -216,26 +235,7 @@
                 <li><strong>Para o Cão (oeste):</strong> coloque um pires com grãos crus e queime, em uma panela de barro, um papel com as mágoas da família que você precisa libertar.</li>
             </ul>
             <p>Essa reconciliação interna vai diminuir os conflitos externos. Você é o centro do rio — se o leito estiver limpo, a enchente vira fartura, e não destruição.</p>
-            <hr class="divider">
-            <h3>Leitura do Nome Sagrado (Seongmyeong Gyeok)</h3>
-            <p>Na tradição dos xamãs que leem os Hanja, cada nome é um campo de força. O processo decifra a alma das palavras para os Cinco Elementos, e avalia como esse campo interage com o seu Saju.</p>
-            <h4>Rayane — Sua Essência de Água, O Portal</h4>
-            <ul>
-                <li><strong>Som-raiz:</strong> Ra-ya-ne. O som "Ra" vibra como o sol nascente (Fogo), mas a repetição do "a" aberto evoca a expansão da água. O significado profundo: "porta do paraíso", "aquela que é viçosa e irrigada".</li>
-                <li><strong>Elemento:</strong> <strong>Água Yin (癸)</strong> — idêntico ao seu Mestre do Dia.</li>
-                <li><strong>Aspecto positivo:</strong> Seu nome de batismo é um espelho da sua alma. Quando você se apresenta como Rayane, você ativa a intuição, a empatia, a fluidez e o magnetismo da Gota de Orvalho. É o nome que cura, que acolhe, que escreve poesia.</li>
-                <li><strong>Aspecto negativo:</strong> Reforça a tendência Saju ao afogamento emocional. Sendo Água sobre Água (com a Hora do Rato), o nome Rayane pode torná-la porosa demais, absorvendo dores alheias sem filtro.</li>
-                <li><strong>Vínculo Saju:</strong> Alimenta diretamente o Sangsik (Talento Rebelde) — use este nome para assinar suas obras artísticas, seu canal de cura, seu diário espiritual. Nunca o reprima.</li>
-            </ul>
-            <h4>Patrícia — O Dever Nobre, A Estrutura</h4>
-            <ul>
-                <li><strong>Significado:</strong> Do latim <em>patricius</em>, "nobre", "de classe patrícia".</li>
-                <li><strong>Elemento:</strong> <strong>Madeira Yin (乙)</strong> — a grama flexível que se curva, mas não quebra.</li>
-                <li><strong>Aspecto positivo:</strong> Este nome ancora o Jeonggwan (Oficial Direto) do seu pilar do mês. Patrícia lhe dá postura, credibilidade, a capacidade de se portar em tribunais, empresas, universidades. É a face que o mundo respeita.</li>
-                <li><strong>Aspecto negativo:</strong> Pode se tornar uma armadura rígida que sufoca o Sangsik. Quando você se força a ser apenas a "Patrícia", a artista interior entra em greve.</li>
-                <li><strong>Vínculo Saju:</strong> Patrícia é a ponte entre o Dragão (mês) e o Cão (ano). Usar este nome em ambientes de hierarquia acalma o conflito Jin-Sul. Em reuniões de trabalho, documentos oficiais, assine Rayane Patrícia — a água nutre a madeira, a criatividade nutre a carreira.</li>
-            </ul>
-            <div class="footer">Página 5   |   Fio de Ouro</div>
+            <div class="page-number">5</div>
         </div>
     </div>
 
@@ -244,9 +244,41 @@
         <div class="watermark">SAJU</div>
         <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
         <div class="content">            <div class="header">
-                <div class="header-title">Nomes e Assinatura</div>
+                <div class="header-title">Leitura do Nome Sagrado</div>
                 <img src="logo-fio-de-ouro.png" alt="Logo" class="logo-small">
             </div>
+            <h3>Leitura do Nome Sagrado (Seongmyeong Gyeok)</h3>
+            <p>Na tradição dos xamãs que leem os Hanja, cada nome é um campo de força. O processo decifra a alma das palavras para os Cinco Elementos, e avalia como esse campo interage com o seu Saju.</p>
+            
+            <h4>Rayane — Sua Essência de Água, O Portal</h4>
+            <ul>
+                <li><strong>Som-raiz:</strong> Ra-ya-ne. O som "Ra" vibra como o sol nascente (Fogo), mas a repetição do "a" aberto evoca a expansão da água. O significado profundo: "porta do paraíso", "aquela que é viçosa e irrigada".</li>
+                <li><strong>Elemento:</strong> <strong>Água Yin (癸)</strong> — idêntico ao seu Mestre do Dia.</li>
+                <li><strong>Aspecto positivo:</strong> Seu nome de batismo é um espelho da sua alma. Quando você se apresenta como Rayane, você ativa a intuição, a empatia, a fluidez e o magnetismo da Gota de Orvalho. É o nome que cura, que acolhe, que escreve poesia.</li>
+                <li><strong>Aspecto negativo:</strong> Reforça a tendência Saju ao afogamento emocional. Sendo Água sobre Água (com a Hora do Rato), o nome Rayane pode torná-la porosa demais, absorvendo dores alheias sem filtro.</li>
+                <li><strong>Vínculo Saju:</strong> Alimenta diretamente o Sangsik (Talento Rebelde) — use este nome para assinar suas obras artísticas, seu canal de cura, seu diário espiritual. Nunca o reprima.</li>
+            </ul>
+            <div class="page-number">6</div>
+        </div>
+    </div>
+
+    <!-- PÁGINA 7 -->
+    <div class="page">
+        <div class="watermark">SAJU</div>
+        <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+        <div class="content">
+            <div class="header">
+                <div class="header-title">Nomes: Patrícia e Reis</div>
+                <img src="logo-fio-de-ouro.png" alt="Logo" class="logo-small">
+            </div>
+            <h4>Patrícia — O Dever Nobre, A Estrutura</h4>
+            <ul>
+                <li><strong>Significado:</strong> Do latim <em>patricius</em>, "nobre", "de classe patrícia".</li>
+                <li><strong>Elemento:</strong> <strong>Madeira Yin (乙)</strong> — a grama flexível que se curva, mas não quebra.</li>
+                <li><strong>Aspecto positivo:</strong> Este nome ancora o Jeonggwan (Oficial Direto) do seu pilar do mês. Patrícia lhe dá postura, credibilidade, a capacidade de se portar em tribunais, empresas, universidades. É a face que o mundo respeita.</li>
+                <li><strong>Aspecto negativo:</strong> Pode se tornar uma armadura rígida que sufoca o Sangsik. Quando você se força a ser apenas a "Patrícia", a artista interior entra em greve.</li>
+                <li><strong>Vínculo Saju:</strong> Patrícia é a ponte entre o Dragão (mês) e o Cão (ano). Usar este nome em ambientes de hierarquia acalma o conflito Jin-Sul. Em reuniões de trabalho, documentos oficiais, assine Rayane Patrícia — a água nutre a madeira, a criatividade nutre a carreira.</li>
+            </ul>
             <h4>Reis — O Fogo da Realeza, A Espada Oculta</h4>
             <ul>
                 <li><strong>Significado:</strong> "Reis", plural de Rei. A autoridade máxima, o Sol.</li>
@@ -255,6 +287,18 @@
                 <li><strong>Aspecto negativo:</strong> É um nome que grita "competição" e "rivalidade". Associado ao pilar da Hora (Ladrão da Riqueza, Gyeoljae), usar o sobrenome Reis abertamente pode evocar inveja, disputas de poder e atrair pessoas que querem tomar o seu trono.</li>
                 <li><strong>Vínculo Saju:</strong> Use Reis com sabedoria ritualística. Quando precisar se impor, vista algo vermelho e assine mentalmente "Rayane Reis". No cotidiano, mantenha-o como escudo protetor, mas não como bandeira.</li>
             </ul>
+            <div class="page-number">7</div>
+        </div>
+    </div>
+
+    <!-- PÁGINA 8 -->
+    <div class="page">        <div class="watermark">SAJU</div>
+        <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
+        <div class="content">
+            <div class="header">
+                <div class="header-title">Alves e Assinatura</div>
+                <img src="logo-fio-de-ouro.png" alt="Logo" class="logo-small">
+            </div>
             <h4>Alves — O Metal Brilhante, O Escudo Ancestral</h4>
             <ul>
                 <li><strong>Significado:</strong> De "alvo", branco, brilhante, puro.</li>
@@ -263,7 +307,6 @@
                 <li><strong>Aspecto negativo:</strong> Excesso de Metal pode levar à frieza analítica, à mágoa silenciosa guardada nos ossos (Galo do Dia). Pode torná-la distante.</li>
                 <li><strong>Vínculo Saju:</strong> Alves é o seu anjo da guarda grafado em letras. Ele completa a Água de Rayane, dando um leito de cristal para o rio correr. Use sempre o nome completo em meditações, pois ele fecha o ciclo.</li>
             </ul>
-            <hr class="divider">
             <h3>Assinatura Xamânica: O Uso do Nome-Talismã</h3>
             <table>
                 <thead><tr><th>Situação</th><th>Nome a Usar</th><th>Efeito no Saju</th></tr></thead>
@@ -274,31 +317,31 @@
                     <tr><td>Proteção diária</td><td><strong>R. Patrícia Alves</strong></td><td>Discrição que blinda o nome de Água contra o Roubo de Energia (Gyeoljae).</td></tr>
                 </tbody>
             </table>
-            <div class="footer">Página 6   |   Fio de Ouro</div>
+            <div class="page-number">8</div>
         </div>
     </div>
 
-    <!-- PÁGINA 7 -->
+    <!-- PÁGINA 9 -->
     <div class="page">
         <div class="watermark">SAJU</div>
         <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
         <div class="content">
             <div class="header">
-                <div class="header-title">Mensagem e Saju Real</div>
+                <div class="header-title">Verdadeiro Saju</div>
                 <img src="logo-fio-de-ouro.png" alt="Logo" class="logo-small">
             </div>
-            <blockquote style="border-left: 4px solid var(--gold-bright); padding: 15px 20px; background: rgba(212,175,55,0.08); border-radius: 0 6px 6px 0; margin: 10px 0 20px 0; font-style: italic; color: var(--text-light);">
-                <strong>A Mensagem Final:</strong> Rayane Patrícia Reis Alves, seu nome completo canta a solução do seu Saju. O conflito entre o Dragão e o Cão encontra paz quando todas as partes são ouvidas: a Artista, a Nobre, a Rainha e a Sábia. O perigo estava em escolher uma só face; o poder está em orquestrar as quatro. Quando o mundo lhe exigir uma só versão, lembre-se: você não é uma gota no oceano, você é o oceano inteiro em uma gota. Seu nome é a margem que dá forma a essa imensidão.
+            <blockquote style="border-left: 3px solid var(--gold-bright); padding: 10px 15px; background: rgba(212,175,55,0.08); margin: 5px 0 15px 0; font-style: italic; color: var(--text-light);">
+                <strong>A Mensagem Final:</strong> Rayane Patrícia Reis Alves, seu nome completo canta a solução do seu Saju. O conflito entre o Dragão e o Cão encontra paz quando todas as partes são ouvidas: a Artista, a Nobre, a Rainha e a Sábia. O perigo estava em escolher uma só face; o poder está em orquestrar as quatro.
             </blockquote>
             <h3>O Verdadeiro Saju de Rayane Patrícia Reis Alves</h3>
             <p><strong>Mestre do Dia:</strong> <strong>壬 (Im, Água Yang)</strong> — A Onda que Tudo Arrasta</p>
-            <table>                <thead><tr><th>Pilar</th><th>Hanja</th><th>Elemento Celeste</th><th>Ramo Terrestre</th><th>Relação com o Mestre do Dia</th></tr></thead>
+            <table>
+                <thead><tr><th>Pilar</th><th>Hanja</th><th>Elemento Celeste</th><th>Ramo Terrestre</th><th>Relação com o Mestre</th></tr></thead>
                 <tbody>
                     <tr><td><strong>Ano</strong></td><td>甲戌</td><td>Madeira Yang (甲)</td><td>Cão (戌)</td><td><strong>Sik-Sin</strong> — criatividade que nutre e dá voz</td></tr>
                     <tr><td><strong>Mês</strong></td><td>戊辰</td><td>Terra Yang (戊)</td><td>Dragão (辰)</td><td><strong>Pyeon-Gwan</strong> — pressão, autoridade que desafia</td></tr>
                     <tr><td><strong>Dia</strong></td><td>壬申</td><td>Água Yang (壬)</td><td>Macaco (申)</td><td><strong>O Eu Superior</strong> — oceano sentado no metal da sabedoria</td></tr>
-                    <tr><td><strong>Hora</strong></td><td>壬子</td><td>Água Yang (壬)</td><td>Rato (자)</td><td><strong>Gyeoljae</strong> — irmandade, competição, sociabilidade</td></tr>
-                </tbody>
+                    <tr><td><strong>Hora</strong></td><td>壬子</td><td>Água Yang (壬)</td><td>Rato (자)</td><td><strong>Gyeoljae</strong> — irmandade, competição, sociabilidade</td></tr>                </tbody>
             </table>
             <p><strong>Retrato da Alma:</strong> Você é um rio caudaloso, não um riacho. O Dragão (mês) e o Cão (ano) ainda se estranham, mas agora esse confronto desperta o Metal do Macaco (seu cônjuge/eu interior) e a Água do Rato (seus dons e rivais). O ano lhe dá o Talento Alimentar (Sik-Sin), uma criatividade que não é rebelde, e sim serviçal, professoral, curativa — a voz que ensina. O mês lhe dá o Pyeon-Gwan, um chefe severo, um dever que oprime, mas que, se dominado pela sua imensa força d’água, vira poder de realização.</p>
             <p><strong>Como o nome corrigido se vincula:</strong></p>
@@ -308,17 +351,17 @@
                 <li><strong>Reis (Fogo Yang):</strong> É o Pyeon-Jae (Riqueza Inesperada): negócios, investimentos, a coroa que brilha.</li>
                 <li><strong>Alves (Metal Yin):</strong> É o Jeong-In (Recurso Correto): o estudo, a proteção espiritual, a sabedoria que acalma a alma.</li>
             </ul>
-            <div class="footer">Página 7   |   Fio de Ouro</div>
+            <div class="page-number">9</div>
         </div>
     </div>
 
-    <!-- PÁGINA 8 -->
+    <!-- PÁGINA 10 -->
     <div class="page">
         <div class="watermark">SAJU</div>
         <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
         <div class="content">
             <div class="header">
-                <div class="header-title">Previsões e Ciclos</div>
+                <div class="header-title">Previsões Futuras</div>
                 <img src="logo-fio-de-ouro.png" alt="Logo" class="logo-small">
             </div>
             <h3>Previsão: 2º Semestre de 2026 — O Cavalo de Fogo</h3>
@@ -328,31 +371,28 @@
                 <li><strong>Choque no íntimo:</strong> O mesmo Cavalo se choca violentamente com o Rato da sua hora. Esse embate pode trazer uma traição de amizade, ou uma competição que a desestabiliza emocionalmente. O nome <em>Rayane</em> estará em evidência — cuidado com quem chama de "amiga".</li>
                 <li><strong>Ritual de passagem:</strong> Entre setembro e outubro, o Metal do outono começará a nutrir sua Água, trazendo clareza após o caos. Assine <em>Rayane Alves</em> nos seus diários.</li>
             </ul>
+
             <h3>Os Cinco Anos Futuros (2027–2031)</h3>
             <p>A partir de 2028, você entra no Grande Ciclo da Sorte <strong>Gap-Ja (甲子)</strong> — Madeira Yang sobre Rato d'Água. Um portal de expressão e colaboração.</p>
-            <h4>2027 — Ano do Carneiro de Fogo (丁未)</h4>
-            <p>Riqueza direta com o Carneiro ferindo sutilmente seu Cão natal. Brigas veladas em família ou na empresa. O dinheiro entra por seu Talento, mas há desgastes nos bastidores. <strong>Como agir:</strong> Use o nome Patrícia para se blindar. Assine contratos como Rayane Patrícia Alves.</p>
-            <h4>2028 — Ano do Macaco de Terra (戊申)</h4>
-            <p>Ano de choque e renascimento. A carreira pesa, mas o novo ciclo trará o Sik-Sin em destaque — você encontrará uma nova forma de ensinar, escrever ou curar que a libertará. <strong>Previsão:</strong> Uma proposta de trabalho autônomo, um curso, ou a saída de um emprego sufocante. O nome Alves será seu bastão.</p>
-            <h4>2029 — Ano do Galo de Terra (己酉)</h4>
-            <p>Finalmente, a autoridade não a oprime, mas a reconhece. Certificações, diplomas, casamento formal ou um contrato de prestígio. <strong>Previsão:</strong> Seu nome Patrícia (a nobre) será entronizado. Este é o ano para oficializar seu negócio. Use Rayane Patrícia Alves em toda a sua potência.</p>
-            <div class="footer">Página 8   |   Fio de Ouro</div>
+            <ul>
+                <li><strong>2027 (Carneiro de Fogo):</strong> Riqueza direta com o Carneiro ferindo sutilmente seu Cão natal. Brigas veladas em família ou na empresa. <strong>Nome:</strong> Patrícia para se blindar.</li>
+                <li><strong>2028 (Macaco de Terra):</strong> Ano de choque e renascimento. A carreira pesa, mas o novo ciclo trará o Sik-Sin em destaque — você encontrará uma nova forma de ensinar, escrever ou curar que a libertará. <strong>Nome:</strong> Alves será seu bastão.</li>
+                <li><strong>2029 (Galo de Terra):</strong> Finalmente, a autoridade não a oprime, mas a reconhece. Certificações, diplomas, casamento formal ou um contrato de prestígio. <strong>Nome:</strong> Rayane Patrícia Alves em toda a sua potência.</li>
+                <li><strong>2030 (Cão de Metal):</strong> O Choque entre Dragão e Cão (Jin-Sul) se reacende com força total. Ano de crise familiar, possível mudança de casa, ou rompimento definitivo com padrões ancestrais. <strong>Nome:</strong> Reis lhe dará a coroa para governar o caos.</li>
+                <li><strong>2031 (Porco de Metal):</strong> Sua Água Yang natal encontra um oceano de Água Yin. Enorme poder criativo, mediúnico e emocional. O risco é se perder em ilusões ou no psiquismo alheio. <strong>Nome:</strong> Rayane com moderação; compense com Alves.</li>
+            </ul>
+            <div class="page-number">10</div>
         </div>
     </div>
 
-    <!-- PÁGINA 9 -->
-    <div class="page">        <div class="watermark">SAJU</div>
+    <!-- PÁGINA 11 (RESUMO FINAL) -->
+    <div class="page">
+        <div class="watermark">SAJU</div>
         <div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div>
         <div class="content">
-            <div class="header">
-                <div class="header-title">Resumo Final</div>
+            <div class="header">                <div class="header-title">Resumo Final</div>
                 <img src="logo-fio-de-ouro.png" alt="Logo" class="logo-small">
             </div>
-            <h4>2030 — Ano do Cão de Metal (庚戌)</h4>
-            <p>O Choque entre Dragão e Cão (Jin-Sul) se reacende com força total. Ano de crise familiar, possível mudança de casa, ou rompimento definitivo com padrões ancestrais. <strong>Previsão espiritual:</strong> A xamã que habita em você pode emergir. Sonhos com mortos, visões intensas. Não tema. O nome Reis lhe dará a coroa para governar o caos.</p>
-            <h4>2031 — Ano do Porco de Metal (辛亥)</h4>
-            <p>Sua Água Yang natal encontra um oceano de Água Yin. Enorme poder criativo, mediúnico e emocional. O risco é se perder em ilusões ou no psiquismo alheio. <strong>Previsão:</strong> Se tiver feito o trabalho interno, será um ano de inspiração transbordante. Use o nome Rayane com moderação; compense com Alves (Metal) para dar leito ao rio.</p>
-            <hr class="divider">
             <h3>Resumo dos Aspectos do Destino Vinculados ao Nome</h3>
             <table>
                 <thead><tr><th>Ano</th><th>Sombra</th><th>Luz</th><th>Nome-Talismã</th></tr></thead>
@@ -365,7 +405,12 @@
                     <tr><td><strong>2031</strong></td><td>Afogamento emocional, confusão</td><td>Inspiração máxima, obra-prima</td><td><strong>Rayane Alves</strong> (ritual de terra)</td></tr>
                 </tbody>
             </table>
-            <div class="footer">Página 9   |   Fio de Ouro — Conexão Ancestral</div>
+            
+            <blockquote style="border-left: 3px solid var(--gold-bright); padding: 15px 20px; background: rgba(212,175,55,0.08); border-radius: 0 6px 6px 0; margin-top: 20px; font-style: italic; color: var(--text-light); text-align: center;">
+                "Quando o mundo lhe exigir uma só versão, lembre-se: você não é uma gota no oceano, você é o oceano inteiro em uma gota."
+            </blockquote>
+            
+            <div class="page-number">11</div>
         </div>
     </div>
 
