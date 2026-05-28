@@ -1,1 +1,617 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leitura de Saju — Rayane Patrícia Reis Alves | Fio de Ouro</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Lora:wght@400;500&family=Montserrat:wght@500;600&display=swap');
 
+    :root {
+        --gold-deep: #9C6B2F;
+        --gold-bright: #D4AF37;
+        --gold-light: #FFF8E7;
+        --text-main: #2D1810;
+        --text-light: #5D4037;
+        --bg-cream: #FDF6E3;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+        margin: 0;
+        padding: 30px 0;
+        font-family: 'Lora', serif;
+        color: var(--text-main);
+        background: #c9b8a4;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .page {
+        width: 21cm;
+        min-height: 29.7cm;
+        background: linear-gradient(180deg, #FFF8E7 0%, #F4E4BC 100%);
+        position: relative;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        padding: 2.2cm 2cm;
+        box-sizing: border-box;
+        border: 3px solid var(--gold-bright);
+        border-radius: 4px;
+        overflow: hidden;
+    }
+
+    /* Marca d'água sutil */
+    .watermark {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-15deg);
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 180px;
+        font-weight: 700;
+        color: var(--gold-bright);
+        opacity: 0.06;
+        z-index: 0;
+        pointer-events: none;
+        white-space: nowrap;
+        letter-spacing: 20px;
+        text-transform: uppercase;
+    }
+
+    /* Cantoneiras ornamentais */
+    .corner {
+        position: absolute;
+        width: 45px;
+        height: 45px;
+        border: 3px solid var(--gold-bright);
+        z-index: 1;
+    }
+    .corner.tl { top: 20px; left: 20px; border-right: none; border-bottom: none; border-radius: 6px 0 0 0; }
+    .corner.tr { top: 20px; right: 20px; border-left: none; border-bottom: none; border-radius: 0 6px 0 0; }
+    .corner.bl { bottom: 20px; left: 20px; border-right: none; border-top: none; border-radius: 0 0 0 6px; }
+    .corner.br { bottom: 20px; right: 20px; border-left: none; border-top: none; border-radius: 0 0 6px 0; }
+
+    .content { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; }
+
+    /* CAPA */
+    .cover {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding-top: 2cm;
+    }
+
+    .logo-cover {
+        width: 180px;
+        height: auto;
+        margin-bottom: 50px;
+        filter: drop-shadow(0 4px 8px rgba(156, 107, 47, 0.3));
+    }
+
+    .cover h1 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 42px;
+        color: var(--gold-deep);
+        margin: 0 0 15px 0;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+
+    .cover h2 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 22px;
+        color: var(--text-light);
+        margin: 0 0 50px 0;
+        font-weight: 400;
+        font-style: italic;
+        letter-spacing: 2px;
+    }
+
+    .cover .name {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 36px;
+        color: var(--text-main);
+        margin: 0 0 20px 0;
+        font-weight: 600;
+        letter-spacing: 2px;
+    }
+
+    .cover .year {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 15px;
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        color: var(--gold-deep);
+        border-top: 2px solid var(--gold-bright);
+        border-bottom: 2px solid var(--gold-bright);
+        padding: 12px 40px;
+        margin-top: 30px;
+    }
+
+    /* PÁGINA INTERNA */
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 35px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid var(--gold-bright);
+    }
+
+    .header-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 20px;
+        color: var(--gold-deep);
+        letter-spacing: 2px;
+        font-weight: 600;
+    }
+
+    .header-logo {
+        width: 60px;
+        height: auto;
+        filter: drop-shadow(0 2px 4px rgba(156, 107, 47, 0.2));
+    }
+
+    .divider {
+        border: none;
+        height: 2px;
+        background: linear-gradient(to right, transparent, var(--gold-bright), transparent);
+        margin: 35px 0;
+    }
+
+    h3 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 26px;
+        color: var(--gold-deep);
+        margin: 35px 0 20px 0;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+
+    h4 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 20px;
+        color: var(--text-main);
+        margin: 25px 0 15px 0;
+        font-weight: 600;
+    }
+
+    p {
+        font-size: 15px;
+        line-height: 1.75;
+        margin-bottom: 18px;
+        text-align: justify;
+        color: var(--text-main);
+    }
+
+    strong { color: var(--gold-deep); font-weight: 600; }
+
+    ul, ol {
+        margin: 15px 0 20px 25px;
+        padding: 0;
+    }
+
+    li {
+        font-size: 15px;
+        line-height: 1.7;
+        margin-bottom: 10px;
+        color: var(--text-main);
+    }
+
+    /* TABELAS */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 14px;
+        background: rgba(255, 255, 255, 0.4);
+        border-radius: 4px;
+        overflow: hidden;
+    }
+
+    th {
+        background: var(--gold-deep);
+        color: #fff;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding: 12px 10px;
+        text-align: left;
+        font-weight: 600;
+    }
+
+    td {
+        padding: 12px 10px;
+        border-bottom: 1px solid rgba(156, 107, 47, 0.2);
+        color: var(--text-main);
+    }
+
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) { background: rgba(212, 175, 55, 0.08); }
+
+    /* BLOCKQUOTE / DESTAQUE */
+    blockquote {
+        border-left: 4px solid var(--gold-bright);
+        margin: 25px 0;
+        padding: 20px 25px;
+        background: rgba(212, 175, 55, 0.1);
+        border-radius: 0 8px 8px 0;
+        font-style: italic;
+        color: var(--text-light);
+    }
+
+    blockquote p { margin: 0; font-size: 15px; }
+
+    /* RODAPÉ */
+    .footer {
+        margin-top: auto;
+        text-align: center;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 11px;
+        color: var(--gold-deep);
+        padding-top: 20px;
+        border-top: 1px solid var(--gold-bright);
+        letter-spacing: 1px;
+    }
+
+    /* QUEBRA DE PÁGINA PARA IMPRESSÃO */
+    @media print {
+        body { background: none; padding: 0; }
+        .page { 
+            box-shadow: none; 
+            margin: 0; 
+            border: 2px solid var(--gold-bright);
+            page-break-after: always;
+        }
+        .page:last-child { page-break-after: auto; }
+    }
+</style>
+</head>
+<body>
+
+    <!-- CAPA -->
+    <div class="page">
+        <div class="watermark">FIO DE OURO</div>
+        <div class="corner tl"></div>
+        <div class="corner tr"></div>
+        <div class="corner bl"></div>
+        <div class="corner br"></div>
+        
+        <div class="content cover">
+            <!-- SUBSTITUA PELO CAMINHO DO SEU LOGO -->
+            <img src="logo-fio-de-ouro-transparente.png" alt="Fio de Ouro" class="logo-cover">
+            
+            <h1>Leitura de Saju</h1>
+            <h2>Análise Astrológica e Conexão Ancestral</h2>
+            <div class="name">Rayane Patrícia Reis Alves</div>
+            <div class="year">Ano de 2026</div>
+        </div>
+    </div>
+
+    <!-- PÁGINA 2: PILARES -->
+    <div class="page">
+        <div class="watermark">FIO DE OURO</div>
+        <div class="corner tl"></div>
+        <div class="corner tr"></div>
+        <div class="corner bl"></div>
+        <div class="corner br"></div>
+        
+        <div class="content">
+            <div class="header">
+                <div class="header-title">Os Quatro Pilares</div>
+                <!-- SUBSTITUA PELO CAMINHO DO SEU LOGO -->
+                <img src="logo-fio-de-ouro-transparente.png" alt="Fio de Ouro" class="header-logo">
+            </div>
+
+            <p>O Saju é construído sob a estrutura do Ano, Mês, Dia e Hora de nascimento, representando as fundações sagradas da sua jornada terrena:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Pilar</th>
+                        <th>Hanja</th>
+                        <th>Elemento Celeste</th>
+                        <th>Ramo Terrestre</th>
+                        <th>Significado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Ano</strong></td>
+                        <td>甲戌 (갑술)</td>
+                        <td>Madeira Yang (甲)</td>
+                        <td>Cão (戌)</td>
+                        <td>O Tronco da Criatividade</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mês</strong></td>
+                        <td>戊辰 (무진)</td>
+                        <td>Terra Yang (戊)</td>
+                        <td>Dragão (辰)</td>
+                        <td>O Galho do Dever</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dia</strong></td>
+                        <td>癸酉 (계유)</td>
+                        <td>Água Yin (癸)</td>
+                        <td>Galo (酉)</td>
+                        <td>Você, a Mestre do Dia</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hora</strong></td>
+                        <td>壬子 (임자)</td>
+                        <td>Água Yang (壬)</td>
+                        <td>Rato (자)</td>
+                        <td>O Rio dos Sentimentos</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>Você é uma <strong>Gye-Saram (계사람)</strong> — pessoa de Água Yin. A Gota de Orvalho sobre a folha de lótus: profunda, intuitiva, transparente, mas capaz de refletir o universo inteiro. Sua alma não anda, ela flui.</p>
+
+            <hr class="divider">
+
+            <h3>A Interpretação da Xamã: O Dragão e o Cão Dançam</h3>
+            <p>Na raiz do seu mapa, uma batalha sagrada acontece: <em>Jin-Sul Gyeok (진술충)</em> — o Choque entre Dragão (辰) e Cão (戌). Seu pilar do mês (Dragão, a família/carreira) e do ano (Cão, os ancestrais/o mundo externo) estão em confronto. Isso explica sua sensação de estar sempre entre dois fogos: a necessidade de agradar o clã e a fúria de ser dona de si.</p>
+
+            <p>Esse choque abre o túmulo da água no Dragão e o depósito do fogo no Cão. Isso significa que memórias antigas, dons espirituais reprimidos e emoções vulcânicas estão emergindo à força. Você pode ter sonhos proféticos, sentir presenças ou ter uma sensibilidade que a medicina comum chama de ansiedade, mas o xamã chama de <em>Shinbyeong (신병)</em> — o chamado preliminar dos espíritos.</p>
+
+            <div class="footer">Página 2 &nbsp; | &nbsp; Fio de Ouro — Leitura de Saju</div>
+        </div>
+    </div>
+
+    <!-- PÁGINA 3: OBSTÁCULOS -->
+    <div class="page">
+        <div class="watermark">FIO DE OURO</div>
+        <div class="corner tl"></div>
+        <div class="corner tr"></div>
+        <div class="corner bl"></div>
+        <div class="corner br"></div>
+        
+        <div class="content">
+            <div class="header">
+                <div class="header-title">Seus Obstáculos</div>
+                <img src="logo-fio-de-ouro-transparente.png" alt="Fio de Ouro" class="header-logo">
+            </div>
+
+            <h3>Seus obstáculos já estão desenhados:</h3>
+            
+            <ol>
+                <li><strong>O Conflito entre a Arte e a Norma:</strong> O ano lhe deu o <em>Sangsik (상관)</em> — o Talentoso Ferino, uma criatividade rebelde que derruba regras. O mês lhe deu o <em>Jeonggwan (정관)</em> — o Oficial Direto, a pressão por uma carreira estável, o chefe rígido, o marido convencional. É a artista contra a burocrata dentro de você. Por muito tempo você se sabotou ao tentar se encaixar em moldes que sua alma rejeita.</li>
+                
+                <li><strong>A Sombra da Competição:</strong> Seu pilar da hora (Rato d'Água Yang sobre Rato d'Água Yin) é uma cachoeira de energia. Isso atrai muitos amigos e apoiadores (a água se une à água), mas também atrai o <em>Gyeoljae (겨재)</em> — o Ladrão da Riqueza. É o sócio que some com o lucro, a amiga que compete pelo par romântico, a ajuda que cobra caro. Jamais empreste seu poder sem um escudo.</li>
+                
+                <li><strong>A Frieza do Galo:</strong> Seu corpo-espírito (pilar do dia) está no Galo (酉), metal puro, recurso indireto. Isso lhe dá um intelecto brilhante e um magnetismo pessoal, mas também uma tendência a intelectualizar a dor para não senti-la. Guarda mágoas na espinha, nos rins. O metal corta a madeira: sua criação trava quando você pensa demais.</li>
+            </ol>
+
+            <hr class="divider">
+
+            <h3>Os Melhores Caminhos: Aonde a Água Corre</h3>
+            <p>A Água Yin não floresce no deserto. Ela precisa de canais. Seu mapa clama por saídas de expressão.</p>
+
+            <h4>1. A Vocação que os Espíritos Pedem (Mudang Gil)</h4>
+            <p>Com a Madeira Yang (甲) no topo do ano e a dupla de Água pura na base, você tem o mapa de quem veio para servir de canal. O Sangsik é sua voz. Você deve falar, escrever, pintar ou performar seu mundo interior.</p>
+            <ul>
+                <li><strong>Caminhos práticos:</strong> Terapia holística, astrologia avançada, poesia, roteiro, docência em autoconhecimento, práticas xamânicas ou qualquer arte que ensine os outros a sentir.</li>
+                <li><strong>Caminho espiritual:</strong> Você não é umbandista, mas seu Ori (cabeça) está sob a regência de uma grande Mãe d'Água (Yeowang, a Rainha Dragão). Se não aceitar sua mediunidade em formas estruturadas, a sombra a consumirá. Procure um mentor firme, pois seu poder é real.</li>
+            </ul>
+
+            <div class="footer">Página 3 &nbsp; | &nbsp; Fio de Ouro — Leitura de Saju</div>
+        </div>
+    </div>
+
+    <!-- PÁGINA 4: CURA E RITUAL -->
+    <div class="page">
+        <div class="watermark">FIO DE OURO</div>
+        <div class="corner tl"></div>
+        <div class="corner tr"></div>
+        <div class="corner bl"></div>
+        <div class="corner br"></div>
+        
+        <div class="content">
+            <div class="header">
+                <div class="header-title">Cura e Ritual</div>
+                <img src="logo-fio-de-ouro-transparente.png" alt="Fio de Ouro" class="header-logo">
+            </div>
+
+            <h4>2. A Cura pelo Calor (Fogo)</h4>
+            <p>Seu mapa tem pouco fogo visível (uma faísca no Cão). Falta o coração pulsando. Para não se afogar na própria profundidade, você precisa buscar o elemento Fogo (<em>Bulseong, 불성</em>).</p>
+            <ul>
+                <li><strong>Ação:</strong> Acolha mais o sol, dance descalça, vá ao Rio de Janeiro ver o nascer do sol na praia, use vermelho na base da coluna. No amor, não busque apenas o parceiro que a entende (água), busque aquele que a aquece (fogo).</li>
+            </ul>
+
+            <h4>3. O Momento da Virada (2026 e além)</h4>
+            <p>Você está saindo do ciclo da sorte <em>Eulchuk (을축)</em>, Boi de Madeira Yin, um período de estagnação gelada. Em breve, você entrará no pilar da sorte <em>Gabja (갑자)</em>, Rato de Madeira Yang — será como uma represa rompendo. A Madeira Yang, seu Sangsik, se sentará sobre a Água Yang: ideias nascerão aos borbotões, a fama, a voz, a realização artística explodirão. Aguente firme a transição.</p>
+
+            <hr class="divider">
+
+            <h3>Ritual de Aconselhamento</h3>
+            <p>Rayane, o Dragão e o Cão só se acalmam quando você honra os dois. Uma vez por mês, na lua cheia, faça uma oferenda dupla:</p>
+            <ul>
+                <li><strong>Para o Dragão (leste):</strong> sirva uma xícara de chá verde e escreva em um papel suas metas profissionais concretas.</li>
+                <li><strong>Para o Cão (oeste):</strong> coloque um pires com grãos crus e queime, em uma panela de barro, um papel com as mágoas da família que você precisa libertar.</li>
+            </ul>
+            <p>Essa reconciliação interna vai diminuir os conflitos externos. Você é o centro do rio — se o leito estiver limpo, a enchente vira fartura, e não destruição.</p>
+
+            <div class="footer">Página 4 &nbsp; | &nbsp; Fio de Ouro — Leitura de Saju</div>
+        </div>
+    </div>
+
+    <!-- PÁGINA 5: NOMES -->
+    <div class="page">
+        <div class="watermark">FIO DE OURO</div>
+        <div class="corner tl"></div>
+        <div class="corner tr"></div>
+        <div class="corner bl"></div>
+        <div class="corner br"></div>
+        
+        <div class="content">
+            <div class="header">
+                <div class="header-title">Leitura do Nome Sagrado</div>
+                <img src="logo-fio-de-ouro-transparente.png" alt="Fio de Ouro" class="header-logo">
+            </div>
+
+            <h3>Leitura do Nome Sagrado (Seongmyeong Gyeok)</h3>
+            <p>Na tradição dos xamãs que leem os Hanja, cada nome é um campo de força. O processo decifra a alma das palavras para os Cinco Elementos, e avalia como esse campo interage com o seu Saju.</p>
+
+            <h4>Rayane — Sua Essência de Água, O Portal</h4>
+            <ul>
+                <li><strong>Som-raiz:</strong> Ra-ya-ne. O som "Ra" vibra como o sol nascente (Fogo), mas a repetição do "a" aberto evoca a expansão da água. O significado profundo: "porta do paraíso", "aquela que é viçosa e irrigada".</li>
+                <li><strong>Elemento:</strong> <strong>Água Yin (癸)</strong> — idêntico ao seu Mestre do Dia.</li>
+                <li><strong>Aspecto positivo:</strong> Seu nome de batismo é um espelho da sua alma. Quando você se apresenta como Rayane, você ativa a intuição, a empatia, a fluidez e o magnetismo da Gota de Orvalho. É o nome que cura, que acolhe, que escreve poesia.</li>
+                <li><strong>Aspecto negativo:</strong> Reforça a tendência Saju ao afogamento emocional. Sendo Água sobre Água (com a Hora do Rato), o nome Rayane pode torná-la porosa demais, absorvendo dores alheias sem filtro.</li>
+                <li><strong>Vínculo Saju:</strong> Alimenta diretamente o Sangsik (Talento Rebelde) — use este nome para assinar suas obras artísticas, seu canal de cura, seu diário espiritual. Nunca o reprima.</li>
+            </ul>
+
+            <h4>Patrícia — O Dever Nobre, A Estrutura</h4>
+            <ul>
+                <li><strong>Significado:</strong> Do latim <em>patricius</em>, "nobre", "de classe patrícia".</li>
+                <li><strong>Elemento:</strong> <strong>Madeira Yin (乙)</strong> — a grama flexível que se curva, mas não quebra.</li>
+                <li><strong>Aspecto positivo:</strong> Este nome ancora o Jeonggwan (Oficial Direto) do seu pilar do mês. Patrícia lhe dá postura, credibilidade, a capacidade de se portar em tribunais, empresas, universidades. É a face que o mundo respeita.</li>
+                <li><strong>Aspecto negativo:</strong> Pode se tornar uma armadura rígida que sufoca o Sangsik. Quando você se força a ser apenas a "Patrícia", a artista interior entra em greve.</li>
+                <li><strong>Vínculo Saju:</strong> Patrícia é a ponte entre o Dragão (mês) e o Cão (ano). Usar este nome em ambientes de hierarquia acalma o conflito Jin-Sul. Em reuniões de trabalho, documentos oficiais, assine Rayane Patrícia — a água nutre a madeira, a criatividade nutre a carreira.</li>
+            </ul>
+
+            <div class="footer">Página 5 &nbsp; | &nbsp; Fio de Ouro — Leitura de Saju</div>
+        </div>
+    </div>
+
+    <!-- PÁGINA 6: ASSINATURA E PREVISÕES -->
+    <div class="page">
+        <div class="watermark">FIO DE OURO</div>
+        <div class="corner tl"></div>
+        <div class="corner tr"></div>
+        <div class="corner bl"></div>
+        <div class="corner br"></div>
+        
+        <div class="content">
+            <div class="header">
+                <div class="header-title">Assinatura e Previsões</div>
+                <img src="logo-fio-de-ouro-transparente.png" alt="Fio de Ouro" class="header-logo">
+            </div>
+
+            <h3>Assinatura Xamânica: O Uso do Nome-Talismã</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Situação</th>
+                        <th>Nome a Usar</th>
+                        <th>Efeito no Saju</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Assinar arte, diário, terapias</td>
+                        <td><strong>Rayane Alves</strong></td>
+                        <td>Maximiza a Água pura com o Metal refinado. Jorra criatividade sem transbordar caos.</td>
+                    </tr>
+                    <tr>
+                        <td>Trabalho formal, contratos</td>
+                        <td><strong>Rayane Patrícia Alves</strong></td>
+                        <td>A Nobreza (Madeira) equilibra o Dever (Oficial Direto). Ativa o respeito sem matar a essência.</td>
+                    </tr>
+                    <tr>
+                        <td>Autoafirmação, pedir justiça</td>
+                        <td><strong>Rayane Reis</strong> (mentalmente)</td>
+                        <td>Acende o Fogo que falta. Use com uma vela vermelha e depois "apague" o nome.</td>
+                    </tr>
+                    <tr>
+                        <td>Proteção diária</td>
+                        <td><strong>R. Patrícia Alves</strong></td>
+                        <td>Discrição que blinda o nome de Água contra o Roubo de Energia (Gyeoljae).</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <blockquote>
+                <p><strong>A Mensagem Final:</strong> Rayane Patrícia Reis Alves, seu nome completo canta a solução do seu Saju. O conflito entre o Dragão e o Cão encontra paz quando todas as partes são ouvidas: a Artista, a Nobre, a Rainha e a Sábia. O perigo estava em escolher uma só face; o poder está em orquestrar as quatro. Quando o mundo lhe exigir uma só versão, lembre-se: você não é uma gota no oceano, você é o oceano inteiro em uma gota. Seu nome é a margem que dá forma a essa imensidão.</p>
+            </blockquote>
+
+            <div class="footer">Página 6 &nbsp; | &nbsp; Fio de Ouro — Leitura de Saju</div>
+        </div>
+    </div>
+
+    <!-- PÁGINA 7: RESUMO FINAL -->
+    <div class="page">
+        <div class="watermark">FIO DE OURO</div>
+        <div class="corner tl"></div>
+        <div class="corner tr"></div>
+        <div class="corner bl"></div>
+        <div class="corner br"></div>
+        
+        <div class="content">
+            <div class="header">
+                <div class="header-title">Resumo dos Anos</div>
+                <img src="logo-fio-de-ouro-transparente.png" alt="Fio de Ouro" class="header-logo">
+            </div>
+
+            <h3>Resumo dos Aspectos do Destino Vinculados ao Nome</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ano</th>
+                        <th>Sombra</th>
+                        <th>Luz</th>
+                        <th>Nome-Talismã</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>2026</strong> (2º sem.)</td>
+                        <td>Conflito com amizades</td>
+                        <td>Ganhos financeiros rápidos</td>
+                        <td><strong>Rayane Reis</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>2027</strong></td>
+                        <td>Rixas ocultas na família</td>
+                        <td>Renda estável pela arte</td>
+                        <td><strong>Patrícia Alves</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>2028</strong></td>
+                        <td>Pressão profissional</td>
+                        <td>Nova vocação</td>
+                        <td><strong>Rayane Patrícia Alves</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>2029</strong></td>
+                        <td>Vaidade e rigidez</td>
+                        <td>Reconhecimento público</td>
+                        <td><strong>Rayane Patrícia Alves</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>2030</strong></td>
+                        <td>Crise ancestral</td>
+                        <td>Despertar espiritual</td>
+                        <td><strong>Alves</strong> (rezado)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2031</strong></td>
+                        <td>Afogamento emocional</td>
+                        <td>Inspiração máxima</td>
+                        <td><strong>Rayane Alves</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <hr class="divider">
+
+            <blockquote>
+                <p><strong>Fio de Ouro</strong> — Análise Astrológica e Conexão Ancestral. Este documento foi gerado com design dourado e elegante, preservando 100% do conteúdo da leitura original.</p>
+            </blockquote>
+
+            <div class="footer">Página 7 &nbsp; | &nbsp; Fio de Ouro — Leitura de Saju</div>
+        </div>
+    </div>
+
+</body>
+</html>
